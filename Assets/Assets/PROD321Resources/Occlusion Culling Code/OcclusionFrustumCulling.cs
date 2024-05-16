@@ -205,7 +205,7 @@ public class OcclusionFrustumCulling : MonoBehaviour
                 Debug.DrawLine(occlusionCamera.transform.position, GO.transform.position, Color.red);
                 Debug.Log("Character in bounds of camera.");
 
-                if (Physics.Raycast(occlusionCamera.transform.position, direction, out hit, Mathf.Infinity))
+                if (Physics.Raycast(occlusionCamera.transform.position, direction, out hit, 15f))
                 {
                     Debug.Log("We hit object: " + hit.collider.gameObject.name);
                     if (hit.collider.gameObject.GetComponent<SphereCollider>() != null || hit.collider.gameObject == GO || hit.collider.gameObject == sphereCollider.gameObject)

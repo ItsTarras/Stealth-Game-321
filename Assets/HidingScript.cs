@@ -43,8 +43,24 @@ public class HidingScript : MonoBehaviour
                         audioSource.Play();
 
                         mainCamera.enabled = false;
-                        hidingCamera = hidingSpot.GetComponent<Camera>();
+                        hidingCamera = hidingSpot.GetComponentInChildren<Camera>();
                         hidingCamera.enabled = true;
+
+
+                        Transform[] children = GetComponentsInChildren<Transform>();
+
+                        // Iterate through each child
+                        foreach (Transform child in children)
+                        {
+                            // Check if the child has a MeshRenderer component
+                            MeshRenderer childRenderer = child.GetComponent<MeshRenderer>();
+
+                            // If the child has a MeshRenderer, do something with it
+                            if (childRenderer != null)
+                            {
+                                childRenderer.enabled = false;
+                            }
+                        }
                     }
                 }
             }
@@ -63,6 +79,22 @@ public class HidingScript : MonoBehaviour
                 mainCamera.enabled = true;
                 currentlyHiding = false;
                 meshRenderer.enabled = true;
+
+                Transform[] children = GetComponentsInChildren<Transform>();
+
+                // Iterate through each child
+                foreach (Transform child in children)
+                {
+                    // Check if the child has a MeshRenderer component
+                    MeshRenderer childRenderer = child.GetComponent<MeshRenderer>();
+
+                    // If the child has a MeshRenderer, do something with it
+                    if (childRenderer != null)
+                    {
+                        childRenderer.enabled = true;
+                    }
+                }
+
             }
         }
     }

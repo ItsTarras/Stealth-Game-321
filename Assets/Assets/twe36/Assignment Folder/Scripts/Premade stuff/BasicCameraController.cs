@@ -108,6 +108,20 @@ public class BasicCameraController : MonoBehaviour
                     rb.velocity = rb.velocity.normalized * 10;
                 }
             }
+
+
+
+
+
+
+
+            //ENTER YOUR OTHER BEHAVIOUR HERE!!!!!****************/
+
+            //Our other behaviour, such as running, jumping, etc.
+
+
+            //*************************************************/
+            
         }
     }
 
