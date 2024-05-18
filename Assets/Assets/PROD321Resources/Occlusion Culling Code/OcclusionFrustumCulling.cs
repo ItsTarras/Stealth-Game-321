@@ -186,7 +186,10 @@ public class OcclusionFrustumCulling : MonoBehaviour
         for (int i = 0; i < gameObjectsToTestForOcclusion.Length; i++)
         {
             int frustumsLayerMask = 1 << LayerMask.NameToLayer("Frustums");
-            int layerMask = ~frustumsLayerMask;
+            int enemyLayerMask = 1 << LayerMask.NameToLayer("EnemyLayer");
+
+            // Combine the masks and invert to exclude both layers
+            int layerMask = ~(frustumsLayerMask | enemyLayerMask);
 
             // Get the game object and its visibility sphere
             GameObject GO = gameObjectsToTestForOcclusion[i].gameObject;
@@ -202,10 +205,10 @@ public class OcclusionFrustumCulling : MonoBehaviour
                 // Perform a raycast from the camera towards the object's position
                 Vector3 direction = GO.transform.position - occlusionCamera.transform.position;
                 RaycastHit hit;
-                Debug.DrawLine(occlusionCamera.transform.position, GO.transform.position, Color.red);
+                Debug.DrawLine(occlusionCamera.transform.position, GO.transform.position, Color.red, layerMask);
                 Debug.Log("Character in bounds of camera.");
 
-                if (Physics.Raycast(occlusionCamera.transform.position, direction, out hit, 15f))
+                if (Physics.Raycast(occlusionCamera.transform.position, direction, out hit, 20f, layerMask))
                 {
                     Debug.Log("We hit object: " + hit.collider.gameObject.name);
                     if (hit.collider.gameObject.GetComponent<SphereCollider>() != null || hit.collider.gameObject == GO || hit.collider.gameObject == sphereCollider.gameObject)

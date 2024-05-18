@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class RotateEnemy : MonoBehaviour
@@ -9,19 +8,19 @@ public class RotateEnemy : MonoBehaviour
     [SerializeField] private float rotationSpeed = 1f;
     [SerializeField] private float rotationRange = 90f;
 
-    private float initialYRotation;
+    private Vector3 initialRotation;
 
     private void Start()
     {
-        initialYRotation = transform.eulerAngles.y;
+        initialRotation = transform.eulerAngles;
     }
 
     private void FixedUpdate()
     {
         if (rotate)
         {
-            float newYRotation = initialYRotation + Mathf.Sin(Time.time * rotationSpeed) * rotationRange;
-            transform.rotation = Quaternion.Euler(0f, newYRotation, 0f);
+            float newYRotation = initialRotation.y + Mathf.Sin(Time.time * rotationSpeed) * rotationRange;
+            transform.rotation = Quaternion.Euler(initialRotation.x, newYRotation, initialRotation.z);
         }
     }
 }
