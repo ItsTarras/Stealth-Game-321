@@ -26,7 +26,7 @@ public class BasicCameraController : MonoBehaviour
     public float moveSpeed = 10;
     public float turnSpeed = 1500;
     Rigidbody rb;
-    private bool dead = false;
+    public bool dead = false;
     private HidingScript hidingData;
     // Start is called before the first frame update
     void Start()

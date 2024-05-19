@@ -7,20 +7,22 @@ public class HidingScript : MonoBehaviour
 
     public bool currentlyHiding = false;
     [SerializeField] List<GameObject> hidingPlaces = new List<GameObject>();
-    MeshRenderer meshRenderer;
+    //MeshRenderer meshRenderer;
     AudioSource audioSource;
     private Camera hidingCamera;
     [SerializeField] private Camera mainCamera;
+    BasicCameraController controller;
     // Start is called before the first frame update
     void Start()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+        //meshRenderer = GetComponent<MeshRenderer>();
+        controller = GetComponent<BasicCameraController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!currentlyHiding)
+        if (!currentlyHiding && controller.dead != true)
         {
             //Calculate the distance from the objects, and if we are close enough to one, we can push "E" to hide.
             //When we hide, just disable the mesh renderer, and move the camera to the object's camera.
@@ -36,7 +38,7 @@ public class HidingScript : MonoBehaviour
                     if(Input.GetKeyDown(KeyCode.E))
                     {
                         currentlyHiding = true;
-                        meshRenderer.enabled = false;
+                        //meshRenderer.enabled = false;
 
                         //Play the hiding sound.
                         audioSource = hidingSpot.GetComponent<AudioSource>();
@@ -53,7 +55,7 @@ public class HidingScript : MonoBehaviour
                         foreach (Transform child in children)
                         {
                             // Check if the child has a MeshRenderer component
-                            MeshRenderer childRenderer = child.GetComponent<MeshRenderer>();
+                            SkinnedMeshRenderer childRenderer = child.GetComponent<SkinnedMeshRenderer>();
 
                             // If the child has a MeshRenderer, do something with it
                             if (childRenderer != null)
@@ -78,7 +80,7 @@ public class HidingScript : MonoBehaviour
 
                 mainCamera.enabled = true;
                 currentlyHiding = false;
-                meshRenderer.enabled = true;
+                //meshRenderer.enabled = true;
 
                 Transform[] children = GetComponentsInChildren<Transform>();
 
@@ -86,7 +88,7 @@ public class HidingScript : MonoBehaviour
                 foreach (Transform child in children)
                 {
                     // Check if the child has a MeshRenderer component
-                    MeshRenderer childRenderer = child.GetComponent<MeshRenderer>();
+                    SkinnedMeshRenderer childRenderer = child.GetComponent<SkinnedMeshRenderer>();
 
                     // If the child has a MeshRenderer, do something with it
                     if (childRenderer != null)

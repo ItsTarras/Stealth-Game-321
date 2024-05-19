@@ -129,7 +129,67 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Idle_mixamo_com' has import animation warnings
+      that might lower retargeting quality:\n\t'CC_Base_NeckTwist02' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Jumping_mixamo_com' has import animation warnings that might lower retargeting
+      quality:\n\t'CC_Base_NeckTwist02' is inbetween humanoid transforms and has
+      rotation animation that will be discarded.\n\nClip 'Jump_mixamo_com' has import
+      animation warnings that might lower retargeting quality:\n\t'CC_Base_NeckTwist02'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Slow_Jog_Backwards_mixamo_com' has import animation warnings that might lower
+      retargeting quality:\n\t'CC_Base_NeckTwist02' is inbetween humanoid transforms
+      and has rotation animation that will be discarded.\n\nClip 'Tarras_LowAttack_003'
+      has import animation warnings that might lower retargeting quality:\n\t'CC_Base_NeckTwist02'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Tarras_LowAttack_002' has import animation warnings that might lower retargeting
+      quality:\n\t'CC_Base_NeckTwist02' is inbetween humanoid transforms and has
+      rotation animation that will be discarded.\n\nClip 'Tarras_LowAttack_001' has
+      import animation warnings that might lower retargeting quality:\n\t'CC_Base_NeckTwist02'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'CC_Base_L_Thumb3'
+      has scale animation that will be discarded.\n\nClip 'Tarras_LowAttack_000'
+      has import animation warnings that might lower retargeting quality:\n\t'CC_Base_NeckTwist02'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'CC_Base_R_Thumb3'
+      has scale animation that will be discarded.\n\nClip 'Tarras_LowAttack' has
+      import animation warnings that might lower retargeting quality:\n\t'CC_Base_NeckTwist02'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Tarras_idle' has import animation warnings that might lower retargeting quality:\n\t'CC_Base_NeckTwist02'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Tarras_HighAttack_003' has import animation warnings that might lower retargeting
+      quality:\n\t'CC_Base_NeckTwist02' is inbetween humanoid transforms and has
+      rotation animation that will be discarded.\n\nClip 'Tarras_HighAttack_002'
+      has import animation warnings that might lower retargeting quality:\n\t'CC_Base_NeckTwist02'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Tarras_HighAttack_001' has import animation warnings that might lower retargeting
+      quality:\n\t'CC_Base_NeckTwist02' is inbetween humanoid transforms and has
+      rotation animation that will be discarded.\n\nClip 'Tarras_HighAttack_000'
+      has import animation warnings that might lower retargeting quality:\n\t'CC_Base_NeckTwist02'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Tarras_HighAttack' has import animation warnings that might lower retargeting
+      quality:\n\t'CC_Base_NeckTwist02' is inbetween humanoid transforms and has
+      rotation animation that will be discarded.\n\nClip 'Tarras_Emote_007' has import
+      animation warnings that might lower retargeting quality:\n\t'CC_Base_NeckTwist02'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Tarras_Emote_006' has import animation warnings that might lower retargeting
+      quality:\n\t'CC_Base_NeckTwist02' is inbetween humanoid transforms and has
+      rotation animation that will be discarded.\n\nClip 'Tarras_Emote_005' has import
+      animation warnings that might lower retargeting quality:\n\t'CC_Base_NeckTwist02'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Tarras_Emote_004' has import animation warnings that might lower retargeting
+      quality:\n\t'CC_Base_NeckTwist02' is inbetween humanoid transforms and has
+      rotation animation that will be discarded.\n\nClip 'Tarras_Emote_003' has import
+      animation warnings that might lower retargeting quality:\n\t'CC_Base_NeckTwist02'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Tarras_Emote_001' has import animation warnings that might lower retargeting
+      quality:\n\t'CC_Base_NeckTwist02' is inbetween humanoid transforms and has
+      rotation animation that will be discarded.\n\nClip 'Tarras_Emote_000' has import
+      animation warnings that might lower retargeting quality:\n\t'CC_Base_NeckTwist02'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\nClip
+      'Tarras_Emote_002' has import animation warnings that might lower retargeting
+      quality:\n\t'CC_Base_NeckTwist02' is inbetween humanoid transforms and has
+      rotation animation that will be discarded.\n\nClip 'Crouched_Walking_mixamo_com'
+      has import animation warnings that might lower retargeting quality:\n\t'CC_Base_NeckTwist02'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
