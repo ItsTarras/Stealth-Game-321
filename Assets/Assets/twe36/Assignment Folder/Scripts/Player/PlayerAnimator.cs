@@ -87,24 +87,25 @@ public class PlayerAnimator : MonoBehaviour
         {
             //Start the walking movement.
             animator.SetBool("Walking", true);
+            animator.SetBool("FightingStance", false);
 
             //Vertical Movement
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
             {
                 if (Input.GetKey(KeyCode.W) && currentY < 1)
                 {
-                    animator.SetFloat("BlendY", currentY + 0.01f);
+                    animator.SetFloat("BlendY", Mathf.Lerp(currentY, 1, 1f * Time.deltaTime));
                 }
 
                 if (Input.GetKey(KeyCode.S) && currentY > -1)
                 {
-                    animator.SetFloat("BlendY", currentY - 0.01f);
+                    animator.SetFloat("BlendY", Mathf.Lerp(currentY, -1, 1f * Time.deltaTime));
                 }
             }
             else
             {
                 {
-                    animator.SetFloat("BlendY", 0);
+                    animator.SetFloat("BlendY", Mathf.Lerp(currentY, 0, 1f * Time.deltaTime));
                 }
             }
             
@@ -114,19 +115,19 @@ public class PlayerAnimator : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.A) && currentX > -1)
                 {
-                    animator.SetFloat("BlendX", currentX - 0.01f);
+                    animator.SetFloat("BlendX", Mathf.Lerp(currentX, -1, 1f * Time.deltaTime));
                 }
 
                 if (Input.GetKey(KeyCode.D) && currentX < 1)
                 {
-                    animator.SetFloat("BlendX", currentX + 0.01f);
+                    animator.SetFloat("BlendX", Mathf.Lerp(currentX, 1, 1f * Time.deltaTime));
                 }
             }
             else
             {
 
                     // Reset to neutral if we aren't touching any horizontal key.
-                    animator.SetFloat("BlendX", 0);
+                    animator.SetFloat("BlendX", Mathf.Lerp(currentX, 0, 1f * Time.deltaTime));
                 
             }
 
