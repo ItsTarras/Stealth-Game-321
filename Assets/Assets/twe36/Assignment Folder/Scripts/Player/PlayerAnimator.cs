@@ -80,13 +80,60 @@ public class PlayerAnimator : MonoBehaviour
 
     private void walkingCheck()
     {
-        if (Input.GetKey(KeyCode.W))
+        float currentX = animator.GetFloat("BlendX");
+        float currentY = animator.GetFloat("BlendY");
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
-            animator.SetBool("ForwardWalk", true);
+            //Start the walking movement.
+            animator.SetBool("Walking", true);
+
+            //Vertical Movement
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+            {
+                if (Input.GetKey(KeyCode.W) && currentY < 1)
+                {
+                    animator.SetFloat("BlendY", currentY + 0.01f);
+                }
+
+                if (Input.GetKey(KeyCode.S) && currentY > -1)
+                {
+                    animator.SetFloat("BlendY", currentY - 0.01f);
+                }
+            }
+            else
+            {
+                {
+                    animator.SetFloat("BlendY", 0);
+                }
+            }
+            
+
+            //Horizontal Movement
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            {
+                if (Input.GetKey(KeyCode.A) && currentX > -1)
+                {
+                    animator.SetFloat("BlendX", currentX - 0.01f);
+                }
+
+                if (Input.GetKey(KeyCode.D) && currentX < 1)
+                {
+                    animator.SetFloat("BlendX", currentX + 0.01f);
+                }
+            }
+            else
+            {
+
+                    // Reset to neutral if we aren't touching any horizontal key.
+                    animator.SetFloat("BlendX", 0);
+                
+            }
+
         }
         else
         {
-            animator.SetBool("ForwardWalk", false);
+            animator.SetBool("Walking", false);
         }
     }
 
