@@ -2,102 +2,110 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HidingScript : MonoBehaviour
+
+namespace twe36
 {
 
-    public bool currentlyHiding = false;
-    [SerializeField] List<GameObject> hidingPlaces = new List<GameObject>();
-    //MeshRenderer meshRenderer;
-    AudioSource audioSource;
-    private Camera hidingCamera;
-    [SerializeField] private Camera mainCamera;
-    BasicCameraController controller;
-    // Start is called before the first frame update
-    void Start()
+    public class HidingScript : MonoBehaviour
     {
-        //meshRenderer = GetComponent<MeshRenderer>();
-        controller = GetComponent<BasicCameraController>();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (!currentlyHiding && controller.dead != true)
+        public bool currentlyHiding = false;
+        [SerializeField] List<GameObject> hidingPlaces = new List<GameObject>();
+        //MeshRenderer meshRenderer;
+        AudioSource audioSource;
+        private Camera hidingCamera;
+        [SerializeField] private Camera mainCamera;
+        BasicCameraController controller;
+        // Start is called before the first frame update
+        void Start()
         {
-            //Calculate the distance from the objects, and if we are close enough to one, we can push "E" to hide.
-            //When we hide, just disable the mesh renderer, and move the camera to the object's camera.
-            
-            foreach (GameObject hidingSpot in hidingPlaces)
+            //meshRenderer = GetComponent<MeshRenderer>();
+            controller = GetComponent<BasicCameraController>();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (!currentlyHiding && controller.dead != true)
             {
+                //Calculate the distance from the objects, and if we are close enough to one, we can push "E" to hide.
+                //When we hide, just disable the mesh renderer, and move the camera to the object's camera.
 
-                float distanceToHidingSpot = Vector3.Distance(hidingSpot.transform.position, transform.position);
-
-                if (distanceToHidingSpot < 5)
+                foreach (GameObject hidingSpot in hidingPlaces)
                 {
-                    //Allow us the option to hide.
-                    if(Input.GetKeyDown(KeyCode.E))
+
+                    float distanceToHidingSpot = Vector3.Distance(hidingSpot.transform.position, transform.position);
+
+                    if (distanceToHidingSpot < 5)
                     {
-                        currentlyHiding = true;
-                        //meshRenderer.enabled = false;
-
-                        //Play the hiding sound.
-                        audioSource = hidingSpot.GetComponent<AudioSource>();
-                        audioSource.Play();
-
-                        mainCamera.enabled = false;
-                        hidingCamera = hidingSpot.GetComponentInChildren<Camera>();
-                        hidingCamera.enabled = true;
-
-
-                        Transform[] children = GetComponentsInChildren<Transform>();
-
-                        // Iterate through each child
-                        foreach (Transform child in children)
+                        //Allow us the option to hide.
+                        if (Input.GetKeyDown(KeyCode.E))
                         {
-                            // Check if the child has a MeshRenderer component
-                            SkinnedMeshRenderer childRenderer = child.GetComponent<SkinnedMeshRenderer>();
+                            currentlyHiding = true;
+                            //meshRenderer.enabled = false;
 
-                            // If the child has a MeshRenderer, do something with it
-                            if (childRenderer != null)
+                            //Play the hiding sound.
+                            audioSource = hidingSpot.GetComponent<AudioSource>();
+                            audioSource.pitch = Random.Range(0.8f, 1.1f);
+                            audioSource.volume = Random.Range(0.8f, 1f);
+                            audioSource.Play();
+
+                            mainCamera.enabled = false;
+                            hidingCamera = hidingSpot.GetComponentInChildren<Camera>();
+                            hidingCamera.enabled = true;
+
+
+                            Transform[] children = GetComponentsInChildren<Transform>();
+
+                            // Iterate through each child
+                            foreach (Transform child in children)
                             {
-                                childRenderer.enabled = false;
+                                // Check if the child has a MeshRenderer component
+                                SkinnedMeshRenderer childRenderer = child.GetComponent<SkinnedMeshRenderer>();
+
+                                // If the child has a MeshRenderer, do something with it
+                                if (childRenderer != null)
+                                {
+                                    childRenderer.enabled = false;
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-        else
-        {
-            //If we want to reveal ourselves.
-            if(Input.GetKeyDown(KeyCode.E))
+            else
             {
-                //Reset our camera to our original one.
-                if (hidingCamera != null)
+                //If we want to reveal ourselves.
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    hidingCamera.enabled = false;
-                }
-
-                mainCamera.enabled = true;
-                currentlyHiding = false;
-                //meshRenderer.enabled = true;
-
-                Transform[] children = GetComponentsInChildren<Transform>();
-
-                // Iterate through each child
-                foreach (Transform child in children)
-                {
-                    // Check if the child has a MeshRenderer component
-                    SkinnedMeshRenderer childRenderer = child.GetComponent<SkinnedMeshRenderer>();
-
-                    // If the child has a MeshRenderer, do something with it
-                    if (childRenderer != null)
+                    //Reset our camera to our original one.
+                    if (hidingCamera != null)
                     {
-                        childRenderer.enabled = true;
+                        hidingCamera.enabled = false;
                     }
-                }
 
+                    mainCamera.enabled = true;
+                    currentlyHiding = false;
+                    //meshRenderer.enabled = true;
+
+                    Transform[] children = GetComponentsInChildren<Transform>();
+
+                    // Iterate through each child
+                    foreach (Transform child in children)
+                    {
+                        // Check if the child has a MeshRenderer component
+                        SkinnedMeshRenderer childRenderer = child.GetComponent<SkinnedMeshRenderer>();
+
+                        // If the child has a MeshRenderer, do something with it
+                        if (childRenderer != null)
+                        {
+                            childRenderer.enabled = true;
+                        }
+                    }
+
+                }
             }
         }
     }
+
 }

@@ -2,25 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateEnemy : MonoBehaviour
+namespace twe36
 {
-    [SerializeField] private bool rotate = true;
-    [SerializeField] private float rotationSpeed = 1f;
-    [SerializeField] private float rotationRange = 90f;
 
-    private Vector3 initialRotation;
-
-    private void Start()
+    public class RotateEnemy : MonoBehaviour
     {
-        initialRotation = transform.eulerAngles;
-    }
+        [SerializeField] private bool rotate = true;
+        [SerializeField] private float rotationSpeed = 1f;
+        [SerializeField] private float rotationRange = 90f;
 
-    private void FixedUpdate()
-    {
-        if (rotate)
+        private Vector3 initialRotation;
+
+        private void Start()
         {
-            float newYRotation = initialRotation.y + Mathf.Sin(Time.time * rotationSpeed) * rotationRange;
-            transform.rotation = Quaternion.Euler(initialRotation.x, newYRotation, initialRotation.z);
+            initialRotation = transform.eulerAngles;
+        }
+
+        private void FixedUpdate()
+        {
+            if (rotate)
+            {
+                float newYRotation = initialRotation.y + Mathf.Sin(Time.time * rotationSpeed) * rotationRange;
+                transform.rotation = Quaternion.Euler(initialRotation.x, newYRotation, initialRotation.z);
+            }
         }
     }
+
 }
