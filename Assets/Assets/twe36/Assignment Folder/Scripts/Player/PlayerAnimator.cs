@@ -34,6 +34,7 @@ namespace twe36
                 highCheck();
                 lowCheck();
                 flipCheck();
+                rollCheck();
                 butterflyCheck();
             }
             else
@@ -151,6 +152,18 @@ namespace twe36
             else
             {
                 animator.SetBool("Flip", false);
+            }
+        }
+
+        private void rollCheck()
+        {
+            if (Input.GetKey(KeyCode.G))
+            {
+                animator.SetBool("Rolling", true);
+            }
+            else
+            {
+                animator.SetBool("Rolling", false);
             }
         }
 
